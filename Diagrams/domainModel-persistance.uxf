@@ -4,7 +4,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>20</x>
+      <x>10</x>
       <y>270</y>
       <w>100</w>
       <h>130</h>
@@ -23,7 +23,7 @@ phoneNo
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>210</x>
+      <x>200</x>
       <y>270</y>
       <w>120</w>
       <h>110</h>
@@ -40,7 +40,7 @@ deliveryStatus</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>220</x>
+      <x>210</x>
       <y>480</y>
       <w>110</w>
       <h>80</h>
@@ -55,10 +55,10 @@ amount</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>680</x>
+      <x>670</x>
       <y>260</y>
       <w>140</w>
-      <h>160</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>Product
 --
@@ -69,13 +69,14 @@ salesPrice
 rentPrice
 countryOfOrigin
 inStock
-minStock</panel_attributes>
+minStock
+type</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>700</x>
+      <x>690</x>
       <y>60</y>
       <w>100</w>
       <h>130</h>
@@ -93,7 +94,7 @@ email</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>580</x>
+      <x>570</x>
       <y>500</y>
       <w>70</w>
       <h>70</h>
@@ -108,7 +109,7 @@ color</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>710</x>
+      <x>700</x>
       <y>500</y>
       <w>90</w>
       <h>70</h>
@@ -122,7 +123,7 @@ description</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>850</x>
+      <x>840</x>
       <y>500</y>
       <w>90</w>
       <h>70</h>
@@ -136,40 +137,40 @@ calibre</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>730</x>
-      <y>390</y>
-      <w>180</w>
-      <h>130</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>30;30;160;110</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
       <x>720</x>
-      <y>390</y>
-      <w>50</w>
-      <h>130</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>30;30;30;110</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>580</x>
-      <y>390</y>
+      <y>410</y>
       <w>180</w>
-      <h>130</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>160;30;30;110</additional_attributes>
+    <additional_attributes>30;30;160;90</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
+      <x>710</x>
+      <y>410</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>570</x>
+      <y>410</y>
+      <w>180</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>160;30;30;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>80</x>
       <y>300</y>
       <w>140</w>
       <h>50</h>
@@ -182,7 +183,7 @@ m2=0..*</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>300</x>
+      <x>290</x>
       <y>300</y>
       <w>140</w>
       <h>50</h>
@@ -195,7 +196,7 @@ m2=1..*</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>720</x>
+      <x>710</x>
       <y>160</y>
       <w>50</w>
       <h>120</h>
@@ -209,7 +210,7 @@ m2=1
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>240</x>
+      <x>230</x>
       <y>350</y>
       <w>50</w>
       <h>150</h>
@@ -222,7 +223,7 @@ m2=1</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>420</x>
+      <x>410</x>
       <y>290</y>
       <w>130</w>
       <h>70</h>
@@ -235,14 +236,14 @@ quantity</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>520</x>
+      <x>510</x>
       <y>300</y>
       <w>180</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-m1=1
-m2=1..*</panel_attributes>
+m1=1..*
+m2=1</panel_attributes>
     <additional_attributes>30;30;160;30</additional_attributes>
   </element>
 </diagram>
