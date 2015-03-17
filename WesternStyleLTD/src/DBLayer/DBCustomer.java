@@ -18,7 +18,7 @@ public class DBCustomer implements DBIFCustomer {
 
 	@Override
 	public Customer findCustomer(int cid, boolean retrieveAssociation) {
-		String w = "id = " + cid;
+		String w = "cid = " + cid;
 		Customer c = this.singleWhere(w, retrieveAssociation);
 		return c;
 	}
@@ -60,14 +60,19 @@ public class DBCustomer implements DBIFCustomer {
 
 	@Override
 	public int insertCustomer(Customer c) {
-		String q = "insert into Customer (name) values (?)";
+		String q = "insert into customer (name, address, zipCode, city, phoneNo) values (?, ?, ?, ?, ?)";
 		int res = -1;
 		try(PreparedStatement ps = DBConnection.getInstance().getDBcon().prepareStatement(q, Statement.RETURN_GENERATED_KEYS)
 		){
 			ps.setString(1, c.getName());
+			ps.setString(2, c.getAddress());
+			ps.setString(3, c.getZipCode());
+			ps.setString(4, c.getCity());
+			ps.setString(5, c.getPhoneNo());
+			
 			res = ps.executeUpdate();
-			//int id = new GeneratedKey().getGeneratedKey(ps);
-			//c.setCid(id);
+			int id = new GeneratedKey().getGeneratedKey(ps);
+			c.setCid(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -75,7 +80,7 @@ public class DBCustomer implements DBIFCustomer {
 	}
 
 	private String buildQuery(String where) {
-		String q = "select id, name from Customer";
+		String q = "select cid, name from customer";
 		if(where != null && where.trim().length() > 0) {
 			q += " where " + where;
 		}
@@ -86,8 +91,12 @@ public class DBCustomer implements DBIFCustomer {
 		Customer c = null;
 		try {
 			c = new Customer();
-			c.setCid(rs.getInt("id"));
+			c.setCid(rs.getInt("cid"));
 			c.setName(rs.getString("name"));
+			//c.setAddress(rs.getString("address"));
+			c.setZipCode(rs.getString("zipCode"));
+			c.setCity(rs.getString("city"));
+			c.setPhoneNo(rs.getString("phoneNo"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

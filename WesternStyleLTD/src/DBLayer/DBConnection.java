@@ -8,7 +8,7 @@ public class DBConnection
 	//SQL Server
   // private static final String  driver = "jdbc:sqlserver://kraka.ucn.dk:1433";
    private static final String  driver = "jdbc:sqlserver://localhost:1433";
-   private static final String  databaseName = ";databaseName=example";
+   private static final String  databaseName = ";databaseName=Persistence";
     //SQL Server
     private static String  userName = "; user=sa";
     private static String password = ";password=masterkey";
@@ -27,7 +27,7 @@ public class DBConnection
             //load of driver
             //SQL Server
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            System.out.println("Load af class ok");
+            System.out.println("Load of class ok");
           
         }
         catch(Exception e){
