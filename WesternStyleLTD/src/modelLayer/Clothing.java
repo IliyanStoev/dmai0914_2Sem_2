@@ -5,10 +5,14 @@ public class Clothing extends Product {
 	private String color;
 	
 	public Clothing(String name, double purchasePrice, double salesPrice, String countryOfOrigin, int inStock,
-					int minStock, String type,String size, String color) {
-		super(name, purchasePrice, salesPrice, countryOfOrigin, inStock, minStock, type);
+					int minStock,String size, String color) {
+		super(name, purchasePrice, salesPrice, countryOfOrigin, inStock, minStock);
 		this.size = size;
 		this.color = color;
+	}
+	
+	public Clothing() {
+		
 	}
 
 	public String getSize() {

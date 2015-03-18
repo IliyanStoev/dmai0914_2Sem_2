@@ -4,11 +4,15 @@ public class Equipment extends Product {
 	private String eType;
 	private String description;
 	
-	public Equipment(String name, double purchasePrice, double salesPrice, String countryOfOrigin, int inStock, int minStock, char type,
+	public Equipment(String name, double purchasePrice, double salesPrice, String countryOfOrigin, int inStock, int minStock,
 					String etype, String description) {
-		super(name, purchasePrice, salesPrice, countryOfOrigin, inStock, minStock, type);
+		super(name, purchasePrice, salesPrice, countryOfOrigin, inStock, minStock);
 		this.eType = etype;
 		this.description = description;
+	}
+	
+	public Equipment() {
+		
 	}
 
 	public String getEtype() {

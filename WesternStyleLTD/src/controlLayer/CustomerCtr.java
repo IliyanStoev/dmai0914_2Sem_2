@@ -38,7 +38,7 @@ public class CustomerCtr {
     
     public Customer findByCid(int cid) {
         DBIFCustomer dbCustomer = new DBCustomer();
-        return dbCustomer.findCustomer( cid, true);
+        return dbCustomer.findCustomer(cid);
     }
     
     public int updateCustomer(String name, String address, int codeZip, String city, String phoneNo, int cid) {
@@ -58,16 +58,18 @@ public class CustomerCtr {
     	dbCustomer.removeCustomer(cust);
     }
     
+    
+    
     public List<Customer> findAllCustomerloyee() {
       DBIFCustomer dbCustomer = new DBCustomer();
       List<Customer> allCustomer = new ArrayList<Customer>();
-      allCustomer = dbCustomer.getAllCustomers(false);
+      allCustomer = dbCustomer.getAllCustomers();
       return allCustomer;
     }
      
     public List<Customer> findByFname(String name) {
         DBIFCustomer dbCustomer = new DBCustomer();
-        return dbCustomer.searchCustomer(name, true);
+        return dbCustomer.searchCustomer(name);
     }
         
 }

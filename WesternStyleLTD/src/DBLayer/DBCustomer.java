@@ -32,23 +32,10 @@ public class DBCustomer implements DBIFCustomer {
 	}
 	
 	@Override
-	public List<Customer> getAllCustomers(boolean retrieveAssociation) {
-		List<Customer> res = miscWhere("", retrieveAssociation);
-		return res; 
-	}
-
-	@Override
-	public Customer findCustomer(int cid, boolean retrieveAssociation) {
+	public Customer findCustomer(int cid) {
 		String w = "cid = " + cid;
-		Customer c = this.singleWhere(w, retrieveAssociation);
+		Customer c = this.singleWhere(w);
 		return c;
-	}
-
-	@Override
-	public List<Customer> searchCustomer(String name, boolean retrieveAssociation) {
-		String w = "name like '%" + (name == null ? "" : name) + "%'";
-		List<Customer> res = this.miscWhere(w, retrieveAssociation);
-		return res;
 	}
 
 	@Override
@@ -107,15 +94,15 @@ public class DBCustomer implements DBIFCustomer {
 		return c;
 	}
 	
-	private Customer singleWhere(String where, boolean retrieveAssociation) {
-		List<Customer> res = miscWhere(where, retrieveAssociation);
+	private Customer singleWhere(String where) {
+		List<Customer> res = miscWhere(where);
 		if(res.size() > 0) {
 			return res.get(0);
 		}
 		return null;
 	}
 	
-	private List<Customer> miscWhere(String where, boolean retrieveAssociation) {
+	private List<Customer> miscWhere(String where) {
 		List<Customer> res = new ArrayList<>();
 		try(Statement s = DBConnection.getInstance().getDBcon().createStatement()
 		) {
@@ -135,6 +122,19 @@ public class DBCustomer implements DBIFCustomer {
 		return res;
 	}
 
+	
+	@Override
+	public List<Customer> getAllCustomers() {
+		List<Customer> res = miscWhere("");
+		return res; 
+	}
+
+	@Override
+	public List<Customer> searchCustomer(String name) {
+		String w = "name like '%" + (name == null ? "" : name) + "%'";
+		List<Customer> res = this.miscWhere(w);
+		return res;
+	}
 }
 
 

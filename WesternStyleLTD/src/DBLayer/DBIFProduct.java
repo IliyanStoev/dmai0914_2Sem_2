@@ -7,7 +7,7 @@ public interface DBIFProduct {
 	public List<Product> getAllProducts(boolean retrieveAssociation);
 	public Product findProduct(String name, boolean retrieveAssociation) ;
 	public List<Product> searchProduct(String name, boolean retrieveAssociation);
-	public int updateProduct (Product p);
+	public void updateProduct (Product p, int type);
 	public int removeProduct (Product p);
-	public int insertProduct (Product p);
+	public int insertProduct (Product p, int type);
 }

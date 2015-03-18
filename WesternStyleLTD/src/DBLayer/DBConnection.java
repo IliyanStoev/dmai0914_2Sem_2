@@ -19,8 +19,7 @@ public class DBConnection
     private static DBConnection  instance = null;
 
     // the constructor is private to ensure that only one object of this class is created
-    private DBConnection()
-    {
+    private DBConnection() {
     	String url = driver + databaseName + userName + password;
 
         try{
@@ -80,8 +79,8 @@ public class DBConnection
         return instance;
     }
     
-    public static void startTransaction()
-    { try{
+    public static void startTransaction() { 
+      try{
         con.setAutoCommit(false);
         }
       catch(Exception e){
@@ -89,6 +88,7 @@ public class DBConnection
         System.out.println(e.getMessage());
       }
     }
+    
     public static void commitTransaction()
     { try{
         con.setAutoCommit(true);
