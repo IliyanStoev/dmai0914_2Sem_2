@@ -4,7 +4,7 @@ public class Customer {
 	private int cid;
 	private String name;
 	private String address;
-	private String zipCode;
+	private int zipCode;
 	private String city;
 	private String phoneNo;
 	
@@ -39,11 +39,11 @@ public class Customer {
 		this.address = address;
 	}
 
-	public String getZipCode() {
+	public int getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(String zipCode) {
+	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 

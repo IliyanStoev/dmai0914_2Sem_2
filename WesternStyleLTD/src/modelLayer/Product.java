@@ -8,9 +8,9 @@ public class Product {
 	private String countryOfOrigin;
 	private int inStock;
 	private int minStock;
-	private char type;
+	private String type;
 	
-	public Product(String name, double purchasePrice, double salesPrice, String countryOfOrigin, int inStock, int minStock, char type) {
+	public Product(String name, double purchasePrice, double salesPrice, String countryOfOrigin, int inStock, int minStock, String type) {
 		this.name = name;
 		this.purchasePrice = purchasePrice;
 		this.salesPrice = salesPrice;
@@ -18,6 +18,10 @@ public class Product {
 		this.inStock = inStock;
 		this.minStock = minStock;
 		this.type = type;
+	}
+	
+	public Product() {
+		
 	}
 
 	public int getPid() {
@@ -76,11 +80,11 @@ public class Product {
 		this.minStock = minStock;
 	}
 
-	public char getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(char type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 }

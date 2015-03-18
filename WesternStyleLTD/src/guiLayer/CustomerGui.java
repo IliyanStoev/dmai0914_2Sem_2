@@ -25,6 +25,7 @@ public class CustomerGui extends JFrame {
 	private JTextField cityTF;
 	private JTextField phoneTF;
 	private JTextField cidTF;
+	private Customer cust;
 
 	/**
 	 * Launch the application.
@@ -109,10 +110,22 @@ public class CustomerGui extends JFrame {
 		contentPane.add(btnCreate);
 		
 		JButton btnRemove = new JButton("Remove");
+		btnRemove.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				removeCustomer();
+			}
+		});
 		btnRemove.setBounds(134, 200, 89, 23);
 		contentPane.add(btnRemove);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				updateCustomer();
+			}
+		});
 		btnUpdate.setBounds(233, 200, 89, 23);
 		contentPane.add(btnUpdate);
 		
@@ -139,7 +152,7 @@ public class CustomerGui extends JFrame {
 	private void insertCustomer() {
 		String name = nameTF.getText();
 		String address = addressTF.getText();
-		String codeZip = codeZipTF.getText();
+		int codeZip = Integer.parseInt(codeZipTF.getText());
 		String city = cityTF.getText();
 		String phone = phoneTF.getText();
 		
@@ -156,11 +169,11 @@ public class CustomerGui extends JFrame {
 		int cid = Integer.parseInt(cidTF.getText());
 		
 		CustomerCtr custCtr = new CustomerCtr();
-		Customer cust = custCtr.findById(cid);
+		cust = custCtr.findByCid(cid);
 		if(cust != null) {
 			nameTF.setText(cust.getName());
 			addressTF.setText(cust.getAddress());
-			codeZipTF.setText(cust.getZipCode());
+			codeZipTF.setText(""+cust.getZipCode());
 			cityTF.setText(cust.getCity());
 			phoneTF.setText(cust.getPhoneNo());
 		}
@@ -169,4 +182,20 @@ public class CustomerGui extends JFrame {
 		}
 	}
 	
+	private void updateCustomer() {
+		int cid = cust.getCid();
+		String name = nameTF.getText();
+		String address = addressTF.getText();
+		int codeZip = Integer.parseInt(codeZipTF.getText());
+		String city = cityTF.getText();
+		String phone = phoneTF.getText();
+		
+		CustomerCtr custCtr = new CustomerCtr();
+		custCtr.updateCustomer(name, address, codeZip, city, phone, cid); 
+	}
+
+	private void removeCustomer() {
+		CustomerCtr custCtr = new CustomerCtr();
+		custCtr.removeCustomer(cust);
+	}
 }

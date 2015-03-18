@@ -11,6 +11,27 @@ import java.util.List;
 public class DBCustomer implements DBIFCustomer {
 
 	@Override
+	public int insertCustomer(Customer c) {
+		String q = "insert into customer (name, address, zipCode, city, phoneNo) values (?, ?, ?, ?, ?)";
+		int res = -1;
+		try(PreparedStatement ps = DBConnection.getInstance().getDBcon().prepareStatement(q, Statement.RETURN_GENERATED_KEYS)
+		){
+			ps.setString(1, c.getName());
+			ps.setString(2, c.getAddress());
+			ps.setInt(3, c.getZipCode());
+			ps.setString(4, c.getCity());
+			ps.setString(5, c.getPhoneNo());
+			
+			res = ps.executeUpdate();
+			int id = new GeneratedKey().getGeneratedKey(ps);
+			c.setCid(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	@Override
 	public List<Customer> getAllCustomers(boolean retrieveAssociation) {
 		List<Customer> res = miscWhere("", retrieveAssociation);
 		return res; 
@@ -31,12 +52,16 @@ public class DBCustomer implements DBIFCustomer {
 	}
 
 	@Override
-	public int updateCustomer(Customer c) {
+	public int updateCustomer(Customer cust) {
 		int res = -1;
-		if( c != null ) {
+		if( cust != null ) {
 			String q = "update Customer set "
-					+ "name='" + c.getName() + "' "
-					+ "where id = " + c.getCid();
+					+ "name='" + cust.getName() + "', "
+							+ "address='" + cust.getAddress() + "', "
+									+ "zipCode='" + cust.getZipCode() + "', "
+											+ "city='" + cust.getCity() + "', "
+													+ "phoneNo='" + cust.getPhoneNo() + "' "
+					+ "where cid = " + cust.getCid();
 			try(Statement s = DBConnection.getInstance().getDBcon().createStatement()) {
 				res = s.executeUpdate(q);
 			} catch (SQLException e) {
@@ -47,32 +72,11 @@ public class DBCustomer implements DBIFCustomer {
 	}
 
 	@Override
-	public int removeCustomer(Customer c) {
+	public int removeCustomer(Customer cust) {
 		int res = -1;
-		try(PreparedStatement ps = DBConnection.getInstance().getDBcon().prepareStatement("delete from customer where id = ?")) {
-			ps.setInt(1, c.getCid());
+		try(PreparedStatement ps = DBConnection.getInstance().getDBcon().prepareStatement("delete from customer where cid = ?")) {
+			ps.setInt(1, cust.getCid());
 			res = ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return res;
-	}
-
-	@Override
-	public int insertCustomer(Customer c) {
-		String q = "insert into customer (name, address, zipCode, city, phoneNo) values (?, ?, ?, ?, ?)";
-		int res = -1;
-		try(PreparedStatement ps = DBConnection.getInstance().getDBcon().prepareStatement(q, Statement.RETURN_GENERATED_KEYS)
-		){
-			ps.setString(1, c.getName());
-			ps.setString(2, c.getAddress());
-			ps.setString(3, c.getZipCode());
-			ps.setString(4, c.getCity());
-			ps.setString(5, c.getPhoneNo());
-			
-			res = ps.executeUpdate();
-			int id = new GeneratedKey().getGeneratedKey(ps);
-			c.setCid(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -80,7 +84,7 @@ public class DBCustomer implements DBIFCustomer {
 	}
 
 	private String buildQuery(String where) {
-		String q = "select cid, name from customer";
+		String q = "select cid, name, address, zipCode, city, phoneNo from customer";
 		if(where != null && where.trim().length() > 0) {
 			q += " where " + where;
 		}
@@ -93,8 +97,8 @@ public class DBCustomer implements DBIFCustomer {
 			c = new Customer();
 			c.setCid(rs.getInt("cid"));
 			c.setName(rs.getString("name"));
-			//c.setAddress(rs.getString("address"));
-			c.setZipCode(rs.getString("zipCode"));
+			c.setAddress(rs.getString("address"));
+			c.setZipCode(rs.getInt("zipCode"));
 			c.setCity(rs.getString("city"));
 			c.setPhoneNo(rs.getString("phoneNo"));
 		} catch (Exception e) {
