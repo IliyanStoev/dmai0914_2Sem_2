@@ -80,6 +80,9 @@ public class DBConnection
     }
     
     public static void startTransaction() { 
+    	if(instance == null) {
+    		getInstance();
+    	}
       try{
         con.setAutoCommit(false);
         }

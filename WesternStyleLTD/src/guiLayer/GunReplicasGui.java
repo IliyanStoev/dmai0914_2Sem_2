@@ -1,33 +1,40 @@
 package guiLayer;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import controlLayer.GunReplicasCtr;
+
+import java.awt.SystemColor;
+
+import modelLayer.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import controlLayer.*;
-import modelLayer.*;
+public class GunReplicasGui {
 
-public class GunReplicasGui extends JFrame {
-
-	private JPanel contentPane;
+	private JFrame frmGunReplicas;
+	private JTextField pidTF;
+	private JTextField textField_1;
 	private JTextField nameTF;
 	private JTextField ppriceTF;
 	private JTextField spriceTF;
-	private JTextField countryTF;
+	private JTextField textField_5;
 	private JTextField inStockTF;
 	private JTextField minStockTF;
-	private JTextField calibreTF;
 	private JTextField fabricTF;
-	private JTextField pidTF;
+	private JTextField calibreTF;
+	private JTextField countryTF;
+	
 	private GunReplicas gr;
 
 	/**
@@ -37,8 +44,8 @@ public class GunReplicasGui extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GunReplicasGui frame = new GunReplicasGui();
-					frame.setVisible(true);
+					GunReplicasGui window = new GunReplicasGui();
+					window.frmGunReplicas.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,100 +54,65 @@ public class GunReplicasGui extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the application.
 	 */
 	public GunReplicasGui() {
-		setTitle("Clothing");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmGunReplicas = new JFrame();
+		frmGunReplicas.setTitle("Gun Replicas");
+		frmGunReplicas.setBounds(100, 100, 514, 494);
+		frmGunReplicas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmGunReplicas.getContentPane().setLayout(null);
 		
-		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(10, 29, 46, 14);
-		contentPane.add(lblName);
+		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.control);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(0, 0, 496, 447);
+		frmGunReplicas.getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		JLabel lblPurchasePrice = new JLabel("Purchase price");
-		lblPurchasePrice.setBounds(10, 54, 76, 14);
-		contentPane.add(lblPurchasePrice);
+		JLabel label_4 = new JLabel("Sale Price");
+		label_4.setBounds(183, 162, 75, -4);
+		panel.add(label_4);
 		
-		JLabel lblSalePrice = new JLabel("Sale price");
-		lblSalePrice.setBounds(10, 81, 76, 14);
-		contentPane.add(lblSalePrice);
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(356, 172, 116, 22);
+		panel.add(textField_5);
 		
-		JLabel lblCountryOfOrigin = new JLabel("Country");
-		lblCountryOfOrigin.setBounds(10, 106, 76, 14);
-		contentPane.add(lblCountryOfOrigin);
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(204, 409, 94, 25);
+		panel.add(btnBack);
 		
-		JLabel lblInStock = new JLabel("In stock");
-		lblInStock.setBounds(10, 131, 46, 14);
-		contentPane.add(lblInStock);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBounds(12, 13, 472, 81);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
 		
-		JLabel lblMinStock = new JLabel("Min. stock");
-		lblMinStock.setBounds(10, 160, 76, 14);
-		contentPane.add(lblMinStock);
+		textField_1 = new JTextField();
+		textField_1.setBounds(344, 27, 116, 22);
+		panel_1.add(textField_1);
+		textField_1.setColumns(10);
 		
-		nameTF = new JTextField();
-		nameTF.setColumns(10);
-		nameTF.setBounds(96, 26, 150, 20);
-		contentPane.add(nameTF);		
+		JLabel label_1 = new JLabel("Supplier ID");
+		label_1.setBounds(266, 30, 97, 16);
+		panel_1.add(label_1);
 		
-		ppriceTF = new JTextField();
-		ppriceTF.setColumns(10);
-		ppriceTF.setBounds(96, 51, 150, 20);
-		contentPane.add(ppriceTF);
+		JLabel label = new JLabel("Product ID");
+		label.setBounds(12, 30, 75, 16);
+		panel_1.add(label);
 		
-		spriceTF = new JTextField();
-		spriceTF.setColumns(10);
-		spriceTF.setBounds(96, 78, 150, 20);
-		contentPane.add(spriceTF);
-		
-		countryTF = new JTextField();
-		countryTF.setColumns(10);
-		countryTF.setBounds(96, 103, 150, 20);
-		contentPane.add(countryTF);
-		
-		inStockTF = new JTextField();
-		inStockTF.setColumns(10);
-		inStockTF.setBounds(96, 128, 150, 20);
-		contentPane.add(inStockTF);
-		
-		minStockTF = new JTextField();
-		minStockTF.setColumns(10);
-		minStockTF.setBounds(96, 157, 150, 20);
-		contentPane.add(minStockTF);
-		
-		JButton btnCreate = new JButton("Create");
-		btnCreate.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				insertGunReplicas();
-			}
-		});
-		btnCreate.setBounds(10, 208, 89, 23);
-		contentPane.add(btnCreate);
-		
-		JButton btnUpdate = new JButton("Update");
-		btnUpdate.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				updateGunReplicas();
-			}
-		});
-		btnUpdate.setBounds(109, 208, 89, 23);
-		contentPane.add(btnUpdate);
-		
-		JButton btnRemove = new JButton("Remove");
-		btnRemove.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				removeGunReplicas();
-			}
-		});
-		btnRemove.setBounds(208, 208, 89, 23);
-		contentPane.add(btnRemove);
+		pidTF = new JTextField();
+		pidTF.setBounds(87, 27, 64, 22);
+		panel_1.add(pidTF);
+		pidTF.setColumns(10);
 		
 		JButton btnFind = new JButton("Find");
 		btnFind.addMouseListener(new MouseAdapter() {
@@ -149,33 +121,120 @@ public class GunReplicasGui extends JFrame {
 				findGunReplicas();
 			}
 		});
-		btnFind.setBounds(307, 208, 89, 23);
-		contentPane.add(btnFind);
+		btnFind.setBounds(163, 26, 91, 25);
+		panel_1.add(btnFind);
 		
-		calibreTF = new JTextField();
-		calibreTF.setBounds(281, 157, 86, 20);
-		contentPane.add(calibreTF);
-		calibreTF.setColumns(10);
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_2.setBounds(12, 107, 472, 289);
+		panel.add(panel_2);
+		panel_2.setLayout(null);
 		
-		JLabel lblCalibre = new JLabel("Calibre");
-		lblCalibre.setBounds(281, 131, 46, 14);
-		contentPane.add(lblCalibre);
+		JButton btnRemove = new JButton("Remove");
+		btnRemove.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				removeGunReplicas();
+			}
+		});
+		btnRemove.setBounds(369, 251, 91, 25);
+		panel_2.add(btnRemove);
 		
-		JLabel lblFabric = new JLabel("Fabric");
-		lblFabric.setBounds(276, 78, 46, 14);
-		contentPane.add(lblFabric);
+		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				updateGunReplicas();
+			}
+		});
+		btnUpdate.setBounds(197, 251, 91, 25);
+		panel_2.add(btnUpdate);
+		
+		JButton btnCreate = new JButton("Create");
+		btnCreate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				insertGunReplicas();
+			}
+		});
+		btnCreate.setBounds(12, 251, 91, 25);
+		panel_2.add(btnCreate);
+		
+		spriceTF = new JTextField();
+		spriceTF.setBounds(160, 65, 152, 22);
+		panel_2.add(spriceTF);
+		spriceTF.setColumns(10);
+		
+		ppriceTF = new JTextField();
+		ppriceTF.setBounds(12, 65, 116, 22);
+		panel_2.add(ppriceTF);
+		ppriceTF.setColumns(10);
+		
+		JLabel label_5 = new JLabel("Rent Price");
+		label_5.setBounds(369, 45, 81, 16);
+		panel_2.add(label_5);
+		
+		JLabel label_8 = new JLabel("Sale Price");
+		label_8.setBounds(203, 45, 75, 16);
+		panel_2.add(label_8);
+		
+		JLabel label_3 = new JLabel("Purchase Price");
+		label_3.setBounds(30, 45, 97, 16);
+		panel_2.add(label_3);
+		
+		nameTF = new JTextField();
+		nameTF.setBounds(56, 11, 152, 22);
+		panel_2.add(nameTF);
+		nameTF.setColumns(10);
+		
+		JLabel label_2 = new JLabel("Name");
+		label_2.setBounds(12, 14, 41, 16);
+		panel_2.add(label_2);
+		
+		minStockTF = new JTextField();
+		minStockTF.setBounds(344, 138, 116, 22);
+		panel_2.add(minStockTF);
+		minStockTF.setColumns(10);
+		
+		JLabel label_7 = new JLabel("Minimum Stock");
+		label_7.setBounds(355, 118, 117, 16);
+		panel_2.add(label_7);
+		
+		inStockTF = new JTextField();
+		inStockTF.setBounds(12, 138, 116, 22);
+		panel_2.add(inStockTF);
+		inStockTF.setColumns(10);
+		
+		JLabel label_6 = new JLabel("In Stock");
+		label_6.setBounds(42, 118, 97, 16);
+		panel_2.add(label_6);
 		
 		fabricTF = new JTextField();
-		fabricTF.setBounds(276, 104, 86, 20);
-		contentPane.add(fabricTF);
+		fabricTF.setBounds(160, 168, 152, 22);
+		panel_2.add(fabricTF);
+		fabricTF.setColumns(10);
 		
-		JLabel lblPid = new JLabel("Pid");
-		lblPid.setBounds(276, 22, 46, 14);
-		contentPane.add(lblPid);
+		calibreTF = new JTextField();
+		calibreTF.setBounds(162, 203, 150, 22);
+		panel_2.add(calibreTF);
+		calibreTF.setColumns(10);
 		
-		pidTF = new JTextField();
-		pidTF.setBounds(276, 48, 86, 20);
-		contentPane.add(pidTF);
+		JLabel lblFabric = new JLabel("Fabric");
+		lblFabric.setBounds(116, 173, 97, 16);
+		panel_2.add(lblFabric);
+		
+		JLabel lblCalibre = new JLabel("Calibre");
+		lblCalibre.setBounds(116, 203, 75, 16);
+		panel_2.add(lblCalibre);
+		
+		JLabel lblCountry = new JLabel("Country");
+		lblCountry.setBounds(264, 15, 41, 16);
+		panel_2.add(lblCountry);
+		
+		countryTF = new JTextField();
+		countryTF.setColumns(10);
+		countryTF.setBounds(308, 12, 152, 22);
+		panel_2.add(countryTF);
 	}
 	
 	private void insertGunReplicas() {

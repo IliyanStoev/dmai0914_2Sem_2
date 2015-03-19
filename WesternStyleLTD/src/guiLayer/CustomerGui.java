@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import controlLayer.*;
 import modelLayer.*;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,6 +17,12 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
+
+import java.awt.Color;
+import java.awt.SystemColor;
+
 public class CustomerGui extends JFrame {
 
 	private JPanel contentPane;
@@ -25,6 +32,8 @@ public class CustomerGui extends JFrame {
 	private JTextField cityTF;
 	private JTextField phoneTF;
 	private JTextField cidTF;
+	private JTextField emailTF;
+	
 	private Customer cust;
 
 	/**
@@ -47,56 +56,59 @@ public class CustomerGui extends JFrame {
 	 * Create the frame.
 	 */
 	public CustomerGui() {
+		setTitle("Customer Information");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 396);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(SystemColor.control);
+		contentPane.setToolTipText("Customer Information\r\n");
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		nameTF = new JTextField();
-		nameTF.setBounds(109, 30, 173, 20);
+		nameTF.setBounds(126, 64, 191, 20);
 		contentPane.add(nameTF);
 		nameTF.setColumns(10);
 		
 		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(10, 33, 46, 14);
+		lblName.setBounds(68, 67, 46, 14);
 		contentPane.add(lblName);
 		
 		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setBounds(10, 58, 46, 14);
+		lblAddress.setBounds(68, 101, 46, 14);
 		contentPane.add(lblAddress);
 		
 		JLabel lblCodezip = new JLabel("CodeZip");
-		lblCodezip.setBounds(10, 86, 46, 14);
+		lblCodezip.setBounds(68, 134, 46, 14);
 		contentPane.add(lblCodezip);
 		
 		JLabel lblCity = new JLabel("City");
-		lblCity.setBounds(10, 117, 46, 14);
+		lblCity.setBounds(68, 161, 46, 26);
 		contentPane.add(lblCity);
 		
 		JLabel lblPhone = new JLabel("Phone");
-		lblPhone.setBounds(10, 149, 46, 14);
+		lblPhone.setBounds(68, 200, 46, 14);
 		contentPane.add(lblPhone);
 		
 		addressTF = new JTextField();
 		addressTF.setColumns(10);
-		addressTF.setBounds(109, 55, 173, 20);
+		addressTF.setBounds(126, 98, 191, 20);
 		contentPane.add(addressTF);
 		
 		codeZipTF = new JTextField();
 		codeZipTF.setColumns(10);
-		codeZipTF.setBounds(109, 83, 173, 20);
+		codeZipTF.setBounds(126, 131, 191, 20);
 		contentPane.add(codeZipTF);
 		
 		cityTF = new JTextField();
 		cityTF.setColumns(10);
-		cityTF.setBounds(109, 114, 173, 20);
+		cityTF.setBounds(126, 164, 191, 20);
 		contentPane.add(cityTF);
 		
 		phoneTF = new JTextField();
 		phoneTF.setColumns(10);
-		phoneTF.setBounds(109, 146, 173, 20);
+		phoneTF.setBounds(126, 197, 191, 20);
 		contentPane.add(phoneTF);
 		
 		JButton btnCreate = new JButton("Create");
@@ -106,7 +118,7 @@ public class CustomerGui extends JFrame {
 				insertCustomer();
 			}
 		});
-		btnCreate.setBounds(20, 200, 89, 23);
+		btnCreate.setBounds(12, 310, 102, 26);
 		contentPane.add(btnCreate);
 		
 		JButton btnRemove = new JButton("Remove");
@@ -116,7 +128,7 @@ public class CustomerGui extends JFrame {
 				removeCustomer();
 			}
 		});
-		btnRemove.setBounds(134, 200, 89, 23);
+		btnRemove.setBounds(318, 310, 102, 26);
 		contentPane.add(btnRemove);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -126,7 +138,7 @@ public class CustomerGui extends JFrame {
 				updateCustomer();
 			}
 		});
-		btnUpdate.setBounds(233, 200, 89, 23);
+		btnUpdate.setBounds(171, 263, 89, 26);
 		contentPane.add(btnUpdate);
 		
 		JButton btnFind = new JButton("Find");
@@ -136,17 +148,30 @@ public class CustomerGui extends JFrame {
 				findCustomerById();
 			}
 		});
-		btnFind.setBounds(335, 200, 89, 23);
+		btnFind.setBounds(226, 28, 89, 23);
 		contentPane.add(btnFind);
 		
 		cidTF = new JTextField();
 		cidTF.setColumns(10);
-		cidTF.setBounds(344, 146, 57, 20);
+		cidTF.setBounds(126, 29, 88, 20);
 		contentPane.add(cidTF);
 		
-		JLabel lblFindById = new JLabel("Find by id");
-		lblFindById.setBounds(344, 117, 57, 14);
+		JLabel lblFindById = new JLabel("Customer ID");
+		lblFindById.setBounds(38, 32, 89, 14);
 		contentPane.add(lblFindById);
+		
+		emailTF = new JTextField();
+		emailTF.setColumns(10);
+		emailTF.setBounds(126, 230, 191, 20);
+		contentPane.add(emailTF);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setBounds(68, 233, 46, 14);
+		contentPane.add(lblEmail);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(156, 310, 118, 26);
+		contentPane.add(btnBack);
 	}
 	
 	private void insertCustomer() {

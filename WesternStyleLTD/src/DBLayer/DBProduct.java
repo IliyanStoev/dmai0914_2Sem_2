@@ -46,26 +46,29 @@ public class DBProduct implements DBIFProduct {
 	}
 	
 	@Override
-	public void updateProduct(Product clo, int type) {
+	public void updateProduct(Product prod, int type) {
 		int res = -1;
-		if( clo != null ) {
+		if( prod != null ) {
 			String q = "update Product set "
-					+ "name='" + clo.getName() + "', "
-							+ "purchasePrice='" + clo.getPurchasePrice() + "', "
-									+ "salesPrice='" + clo.getSalesPrice() + "', "
-											+ "countryOfOrig='" + clo.getCountryOfOrigin() + "', "
-													+ "inStock='" + clo.getInStock() + "', "
-														+ "minStock='" + clo.getMinStock() + "' "
-					+ "where pid = " + clo.getPid();
+					+ "name='" + prod.getName() + "', "
+							+ "purchasePrice='" + prod.getPurchasePrice() + "', "
+									+ "salesPrice='" + prod.getSalesPrice() + "', "
+											+ "countryOfOrig='" + prod.getCountryOfOrigin() + "', "
+													+ "inStock='" + prod.getInStock() + "', "
+														+ "minStock='" + prod.getMinStock() + "' "
+					+ "where pid = " + prod.getPid();
 			try(Statement s = DBConnection.getInstance().getDBcon().createStatement()) {
 				res = s.executeUpdate(q);
 				switch(type) {
 				case 1 : DBIFClothing dbClothing = new DBClothing();
-						 dbClothing.updateClothing((Clothing)clo);
+						 dbClothing.updateClothing((Clothing)prod);
 						 break;
 				case 2 : DBIFEquipment dbEquipment = new DBEquipment();
-						 dbEquipment.updateEquipment((Equipment)clo);
+						 dbEquipment.updateEquipment((Equipment)prod);
 						 break;
+				case 3 : DBIFGunReplicas dbGunReplicas = new DBGunReplicas();
+				 dbGunReplicas.updateGunReplicas((GunReplicas)prod);
+				 break;
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
