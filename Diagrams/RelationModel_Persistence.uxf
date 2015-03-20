@@ -42,7 +42,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>codeZip</panel_attributes>
+    <panel_attributes>zipCode</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -70,7 +70,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>450</x>
+      <x>530</x>
       <y>400</y>
       <w>100</w>
       <h>30</h>
@@ -81,7 +81,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>550</x>
+      <x>630</x>
       <y>400</y>
       <w>100</w>
       <h>30</h>
@@ -92,7 +92,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>650</x>
+      <x>730</x>
       <y>400</y>
       <w>100</w>
       <h>30</h>
@@ -103,7 +103,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>750</x>
+      <x>830</x>
       <y>400</y>
       <w>100</w>
       <h>30</h>
@@ -114,7 +114,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>850</x>
+      <x>930</x>
       <y>400</y>
       <w>100</w>
       <h>30</h>
@@ -126,7 +126,7 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>770</x>
+      <x>850</x>
       <y>400</y>
       <w>50</w>
       <h>80</h>
@@ -139,11 +139,11 @@
     <coordinates>
       <x>50</x>
       <y>430</y>
-      <w>770</w>
+      <w>850</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>30;30;750;30</additional_attributes>
+    <additional_attributes>30;30;830;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -205,18 +205,18 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>270</x>
+      <x>250</x>
       <y>680</y>
-      <w>770</w>
+      <w>790</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>30;30;750;30</additional_attributes>
+    <additional_attributes>30;30;770;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>270</x>
+      <x>250</x>
       <y>400</y>
       <w>50</w>
       <h>330</h>
@@ -294,17 +294,6 @@
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>1320</x>
-      <y>270</y>
-      <w>100</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>type</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>1420</x>
       <y>270</y>
       <w>100</w>
       <h>30</h>
@@ -393,7 +382,7 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1440</x>
+      <x>1340</x>
       <y>190</y>
       <w>50</w>
       <h>100</h>
@@ -406,11 +395,11 @@
     <coordinates>
       <x>940</x>
       <y>190</y>
-      <w>550</w>
+      <w>450</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>30;30;530;30</additional_attributes>
+    <additional_attributes>30;30;430;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -704,7 +693,7 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>220</x>
+      <x>270</x>
       <y>340</y>
       <w>160</w>
       <h>70</h>
@@ -759,18 +748,18 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
+      <x>850</x>
       <y>410</y>
       <w>70</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1440</x>
+      <x>1340</x>
       <y>280</y>
       <w>70</w>
       <h>30</h>
@@ -913,7 +902,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>250</x>
+      <x>230</x>
       <y>400</y>
       <w>100</w>
       <h>30</h>
@@ -922,31 +911,20 @@
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>860</x>
-      <y>410</y>
-      <w>90</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
-  </element>
-  <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>560</x>
       <y>540</y>
-      <w>360</w>
+      <w>440</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>340;30;30;30</additional_attributes>
+    <additional_attributes>420;30;30;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>870</x>
+      <x>950</x>
       <y>400</y>
       <w>50</w>
       <h>190</h>
@@ -990,23 +968,35 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>730</x>
-      <y>180</y>
-      <w>100</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>custType</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>350</x>
+      <x>330</x>
       <y>400</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>date</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>430</x>
+      <y>400</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>ordAmount
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>410</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
