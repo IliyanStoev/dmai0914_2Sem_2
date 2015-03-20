@@ -9,19 +9,19 @@ import java.util.ArrayList;
 
 public class CustomerCtr {
    
-    /** Creates a new instance of CtrCustomer */
     public CustomerCtr() {
         
     }
     
-    public void insertCustomer(String name, String address, int codeZip, String city, String phone) throws Exception
+    public void insertCustomer(String name, String address, int zipCode, String city, String phone, String email) throws Exception
     {    
          Customer cust = new Customer();
          cust.setName(name);
          cust.setAddress(address);
-         cust.setZipCode(codeZip);
+         cust.setZipCode(zipCode);
          cust.setCity(city);
          cust.setPhoneNo(phone);
+         cust.setEmail(email);
   
          try{
           DBConnection.startTransaction();
@@ -41,14 +41,15 @@ public class CustomerCtr {
         return dbCustomer.findCustomer(cid);
     }
     
-    public int updateCustomer(String name, String address, int codeZip, String city, String phoneNo, int cid) {
+    public int updateCustomer(String name, String address, int zipCode, String city, String phoneNo, String email, int cid) {
         DBIFCustomer dbCustomer = new DBCustomer();
         Customer cust = new Customer();
         cust.setName(name);
         cust.setAddress(address);
-        cust.setZipCode(codeZip);
+        cust.setZipCode(zipCode);
         cust.setCity(city);
         cust.setPhoneNo(phoneNo);
+        cust.setEmail(email);
         cust.setCid(cid);
         return  dbCustomer.updateCustomer(cust);
     }
@@ -57,19 +58,5 @@ public class CustomerCtr {
     	DBIFCustomer dbCustomer = new DBCustomer();
     	dbCustomer.removeCustomer(cust);
     }
-    
-    
-    
-    public List<Customer> findAllCustomerloyee() {
-      DBIFCustomer dbCustomer = new DBCustomer();
-      List<Customer> allCustomer = new ArrayList<Customer>();
-      allCustomer = dbCustomer.getAllCustomers();
-      return allCustomer;
-    }
-     
-    public List<Customer> findByFname(String name) {
-        DBIFCustomer dbCustomer = new DBCustomer();
-        return dbCustomer.searchCustomer(name);
-    }
-        
+       
 }

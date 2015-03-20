@@ -7,6 +7,7 @@ public class Customer {
 	private int zipCode;
 	private String city;
 	private String phoneNo;
+	private String email;
 	
 	public Customer(int cid) {
 		this.cid = cid;
@@ -62,4 +63,12 @@ public class Customer {
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}	
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

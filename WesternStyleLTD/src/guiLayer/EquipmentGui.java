@@ -14,6 +14,7 @@ import javax.swing.JButton;
 
 import controlLayer.EquipmentCtr;
 import modelLayer.*;
+
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -85,6 +86,12 @@ public class EquipmentGui {
 		panel.add(textField);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				back();
+			}
+		});
 		btnBack.setBounds(206, 448, 94, 25);
 		panel.add(btnBack);
 		
@@ -285,5 +292,10 @@ public class EquipmentGui {
 		EquipmentCtr eqCtr = new EquipmentCtr();
 		eq.setPid(Integer.parseInt(pidTF.getText()));
 		eqCtr.removeEquipment(eq);
+	}
+	
+	public void back() {
+		//this.dispose();
+		MainMenuGui.main(null);
 	}
 }

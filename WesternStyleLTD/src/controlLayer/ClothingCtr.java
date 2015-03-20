@@ -34,7 +34,6 @@ public class ClothingCtr {
 	public Clothing findClothing(int pid) {
 		DBClothing dbClothing = new DBClothing();
 		Clothing clo = dbClothing.findClothing(pid);
-		
 		return clo;
 	}
 	

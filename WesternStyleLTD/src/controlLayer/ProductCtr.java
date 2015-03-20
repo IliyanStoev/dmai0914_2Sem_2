@@ -31,4 +31,37 @@ public class ProductCtr {
              throw new Exception("Product not inserted");
          }
     }
+	
+	public Product findProduct(int pid) {
+		Product prod = new Product();
+		DBClothing dbClothing = new DBClothing();
+		Clothing clo = dbClothing.findClothing(pid);
+		if(clo == null) {
+				DBEquipment dbEquipment = new DBEquipment();
+				Equipment eq = dbEquipment.findEquipment(pid);
+				if( eq == null) {
+						DBGunReplicas dbGunReplicas = new DBGunReplicas();
+						GunReplicas gr = dbGunReplicas.findGunReplicas(pid);
+						if(gr == null) {
+							return null;
+						}
+						else {
+							prod = gr;
+						}
+					}
+				else { 
+					prod = eq;
+				}
+			}
+		else {
+			prod = clo;
+		}
+		
+		return prod;
+	}
+	
+	public SalesLine createSalesLine(Product prod, int quantity) {
+        SalesLine sl = new SalesLine(prod, quantity);
+        return sl;
+    }
 }

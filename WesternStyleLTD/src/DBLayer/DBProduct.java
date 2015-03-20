@@ -89,6 +89,7 @@ public class DBProduct implements DBIFProduct {
 	}
 	
 
+	
 	private String buildQuery(String where) {
 		String q = "select cid, name, address, zipCode, city, phoneNo from customer";
 		if(where != null && where.trim().length() > 0) {
@@ -112,8 +113,6 @@ public class DBProduct implements DBIFProduct {
 		}
 		return c;
 	}
-
-	
 	
 	@Override
 	public List<Product> getAllProducts(boolean retrieveAssociation) {
@@ -122,7 +121,7 @@ public class DBProduct implements DBIFProduct {
 	}
 
 	@Override
-	public Product findProduct(String name, boolean retrieveAssociation) {
+	public Product findProduct(int pid) {
 		// TODO Auto-generated method stub
 		return null;
 	}

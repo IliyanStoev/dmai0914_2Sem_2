@@ -28,7 +28,7 @@ public class CustomerGui extends JFrame {
 	private JPanel contentPane;
 	private JTextField nameTF;
 	private JTextField addressTF;
-	private JTextField codeZipTF;
+	private JTextField zipCodeTF;
 	private JTextField cityTF;
 	private JTextField phoneTF;
 	private JTextField cidTF;
@@ -79,7 +79,7 @@ public class CustomerGui extends JFrame {
 		lblAddress.setBounds(68, 101, 46, 14);
 		contentPane.add(lblAddress);
 		
-		JLabel lblCodezip = new JLabel("CodeZip");
+		JLabel lblCodezip = new JLabel("ZipCode");
 		lblCodezip.setBounds(68, 134, 46, 14);
 		contentPane.add(lblCodezip);
 		
@@ -96,10 +96,10 @@ public class CustomerGui extends JFrame {
 		addressTF.setBounds(126, 98, 191, 20);
 		contentPane.add(addressTF);
 		
-		codeZipTF = new JTextField();
-		codeZipTF.setColumns(10);
-		codeZipTF.setBounds(126, 131, 191, 20);
-		contentPane.add(codeZipTF);
+		zipCodeTF = new JTextField();
+		zipCodeTF.setColumns(10);
+		zipCodeTF.setBounds(126, 131, 191, 20);
+		contentPane.add(zipCodeTF);
 		
 		cityTF = new JTextField();
 		cityTF.setColumns(10);
@@ -170,6 +170,12 @@ public class CustomerGui extends JFrame {
 		contentPane.add(lblEmail);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				back();
+			}
+		});
 		btnBack.setBounds(156, 310, 118, 26);
 		contentPane.add(btnBack);
 	}
@@ -177,13 +183,14 @@ public class CustomerGui extends JFrame {
 	private void insertCustomer() {
 		String name = nameTF.getText();
 		String address = addressTF.getText();
-		int codeZip = Integer.parseInt(codeZipTF.getText());
+		int zipCode = Integer.parseInt(zipCodeTF.getText());
 		String city = cityTF.getText();
 		String phone = phoneTF.getText();
+		String email = emailTF.getText();
 		
 		CustomerCtr custCtr = new CustomerCtr();
 		try {
-			custCtr.insertCustomer(name, address, codeZip, city, phone);
+			custCtr.insertCustomer(name, address, zipCode, city, phone, email);
 		}
         catch(Exception e){
         	System.out.println(e);
@@ -198,9 +205,10 @@ public class CustomerGui extends JFrame {
 		if(cust != null) {
 			nameTF.setText(cust.getName());
 			addressTF.setText(cust.getAddress());
-			codeZipTF.setText(""+cust.getZipCode());
+			zipCodeTF.setText(""+cust.getZipCode());
 			cityTF.setText(cust.getCity());
 			phoneTF.setText(cust.getPhoneNo());
+			emailTF.setText(cust.getEmail());
 		}
 		else {
 			System.out.println("Customer empty");
@@ -211,16 +219,22 @@ public class CustomerGui extends JFrame {
 		int cid = cust.getCid();
 		String name = nameTF.getText();
 		String address = addressTF.getText();
-		int codeZip = Integer.parseInt(codeZipTF.getText());
+		int zipCode = Integer.parseInt(zipCodeTF.getText());
 		String city = cityTF.getText();
 		String phone = phoneTF.getText();
+		String email = emailTF.getText();
 		
 		CustomerCtr custCtr = new CustomerCtr();
-		custCtr.updateCustomer(name, address, codeZip, city, phone, cid); 
+		custCtr.updateCustomer(name, address, zipCode, city, phone, email, cid); 
 	}
 
 	private void removeCustomer() {
 		CustomerCtr custCtr = new CustomerCtr();
 		custCtr.removeCustomer(cust);
+	}
+	
+	public void back() {
+		//this.dispose();
+		MainMenuGui.main(null);
 	}
 }

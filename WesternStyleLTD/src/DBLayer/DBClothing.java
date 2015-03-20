@@ -31,7 +31,7 @@ public class DBClothing implements DBIFClothing{
 
 	@Override
 	public Clothing findClothing(int pid) {
-		String w = "product.pid = " + pid;
+		String w = "clothing.pid = " + pid + "AND product.pid = " + pid;
 		Clothing clo = this.singleWhere(w);
 		return clo;
 	}
@@ -68,7 +68,6 @@ public class DBClothing implements DBIFClothing{
 	}
 	
 	private String buildQuery(String where) {
-		//String q = "select product.pid, name, purchasePrice, salesPrice, countryOfOrig, inStock, minStock, size, colour from product, clothing";
 		String q = "select product.*, size, colour from product, clothing";
 		if(where != null && where.trim().length() > 0) {
 			q += " where " + where;

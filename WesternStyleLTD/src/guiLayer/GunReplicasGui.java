@@ -17,6 +17,7 @@ import controlLayer.GunReplicasCtr;
 import java.awt.SystemColor;
 
 import modelLayer.*;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -87,6 +88,12 @@ public class GunReplicasGui {
 		panel.add(textField_5);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				back();
+			}
+		});
 		btnBack.setBounds(204, 409, 94, 25);
 		panel.add(btnBack);
 		
@@ -290,5 +297,10 @@ public class GunReplicasGui {
 		GunReplicasCtr grCtr = new GunReplicasCtr();
 		gr.setPid(Integer.parseInt(pidTF.getText()));
 		grCtr.removeGunReplicas(gr);
+	}
+	
+	public void back() {
+		//this.dispose();
+		MainMenuGui.main(null);
 	}
 }

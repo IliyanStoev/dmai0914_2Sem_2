@@ -1,12 +1,16 @@
 package modelLayer;
 
+import java.util.ArrayList;
+
 public class SalesOrder {
 	
 	private int oid;
 	private String date;
-	private int ordAmount;
+	private double ordAmount;
 	private String deliveryDate;
 	private String deliveryStatus;
+	private Customer cust;
+	private ArrayList<SalesLine> salesLines;
 	
 	
 	public SalesOrder(int oid) { 
@@ -14,6 +18,7 @@ public class SalesOrder {
 	}
 	
 	public SalesOrder() {
+		salesLines = new ArrayList<>();
 		
 	}
 	
@@ -38,12 +43,12 @@ public class SalesOrder {
 	}
 	
 	
-	public int getOrdAmount() {
+	public double getOrdAmount() {
 		return ordAmount;
 	}
 	
 	
-	public void setAmount(int ordAmount) {
+	public void setAmount(double ordAmount) {
 		this.ordAmount = ordAmount;
 	}
 	
@@ -65,6 +70,22 @@ public class SalesOrder {
 	
 	public void setDeliveryStatus(String deliveryStatus) {
 		this.deliveryStatus = deliveryStatus;
+	}
+	
+	public Customer getCustomer() {
+		return cust;
+	}
+	
+	public void setCustomer(Customer cust) {
+		this.cust = cust;
+	}
+	
+	public ArrayList<SalesLine> getSalesLines() {
+		return salesLines;
+	}
+	
+	public void setSalesLines(ArrayList<SalesLine> salesLines) {
+		this.salesLines = salesLines;
 	}
 }
 

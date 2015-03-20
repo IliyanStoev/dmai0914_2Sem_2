@@ -31,7 +31,7 @@ public class DBGunReplicas implements DBIFGunReplicas{
 
 	@Override
 	public GunReplicas findGunReplicas(int pid) {
-		String w = "product.pid = " + pid;
+		String w = "gunReplica.pid = " + pid + "AND product.pid = " + pid;
 		GunReplicas gr = this.singleWhere(w);
 		return gr;
 	}
@@ -68,7 +68,6 @@ public class DBGunReplicas implements DBIFGunReplicas{
 	}
 	
 	private String buildQuery(String where) {
-		//String q = "select product.pid, name, purchasePrice, salesPrice, countryOfOrig, inStock, minStock, size, colour from product, GunReplicas";
 		String q = "select product.*, fabric, calibre from product, gunReplica";
 		if(where != null && where.trim().length() > 0) {
 			q += " where " + where;

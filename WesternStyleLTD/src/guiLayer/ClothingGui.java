@@ -18,11 +18,13 @@ import javax.swing.JButton;
 import controlLayer.ClothingCtr;
 
 import java.awt.SystemColor;
+
 import modelLayer.*;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ClothingGui {
+public class ClothingGui extends JFrame{
 
 	private JFrame frmClothing;
 	private JTextField textField;
@@ -89,6 +91,12 @@ public class ClothingGui {
 		panel.add(textField);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				back();
+			}
+		});
 		btnBack.setBounds(204, 409, 94, 25);
 		panel.add(btnBack);
 		
@@ -292,5 +300,10 @@ public class ClothingGui {
 		ClothingCtr cloCtr = new ClothingCtr();
 		clo.setPid(Integer.parseInt(pidTF.getText()));
 		cloCtr.removeClothing(clo);
+	}
+	
+	public void back() {
+		this.dispose();
+		MainMenuGui.main(null);
 	}
 }

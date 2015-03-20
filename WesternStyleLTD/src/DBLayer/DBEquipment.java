@@ -31,7 +31,7 @@ public class DBEquipment implements DBIFEquipment{
 
 	@Override
 	public Equipment findEquipment(int pid) {
-		String w = "product.pid = " + pid;
+		String w = "equipment.pid = " + pid + "AND product.pid = " + pid;
 		Equipment clo = this.singleWhere(w);
 		return clo;
 	}
@@ -68,7 +68,6 @@ public class DBEquipment implements DBIFEquipment{
 	}
 	
 	private String buildQuery(String where) {
-		//String q = "select product.pid, name, purchasePrice, salesPrice, countryOfOrig, inStock, minStock, size, colour from product, Equipment";
 		String q = "select product.*, equipment.type, descr from product, equipment";
 		if(where != null && where.trim().length() > 0) {
 			q += " where " + where;
