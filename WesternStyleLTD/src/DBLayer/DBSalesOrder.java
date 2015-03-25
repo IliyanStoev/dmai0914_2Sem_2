@@ -7,17 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import modelLayer.*;
 
 public class DBSalesOrder implements DBIFSalesOrder {
-
-	@Override
-	public int cancelSalesOrder(SalesOrder so) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public int insertSalesOrder(SalesOrder so) {
@@ -51,7 +43,6 @@ public class DBSalesOrder implements DBIFSalesOrder {
 		SalesOrder so = this.singleWhere(w, retrieveAssociation);
 		return so;
 	}
-
 	
 	private SalesOrder singleWhere(String where, boolean retrieveAssociation) {
 		List<SalesOrder> res = miscWhere(where, retrieveAssociation);

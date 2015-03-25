@@ -17,8 +17,8 @@ public class DBClothing implements DBIFClothing{
 		int res = -1;
 		try(PreparedStatement ps = DBConnection.getInstance().getDBcon().prepareStatement(q)
 		){
-			ps.setString(2, clo.getSize());
-			ps.setString(1, clo.getColor());
+			ps.setString(1, clo.getSize());
+			ps.setString(2, clo.getColor());
 			ps.setInt(3, clo.getPid());
 			
 			res = ps.executeUpdate();

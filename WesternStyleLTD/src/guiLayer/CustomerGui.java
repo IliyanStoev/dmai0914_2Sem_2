@@ -10,6 +10,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -181,20 +182,24 @@ public class CustomerGui extends JFrame {
 	}
 	
 	private void insertCustomer() {
+		CustomerCtr custCtr = new CustomerCtr();
+		
 		String name = nameTF.getText();
 		String address = addressTF.getText();
 		int zipCode = Integer.parseInt(zipCodeTF.getText());
 		String city = cityTF.getText();
 		String phone = phoneTF.getText();
 		String email = emailTF.getText();
-		
-		CustomerCtr custCtr = new CustomerCtr();
+			
 		try {
 			custCtr.insertCustomer(name, address, zipCode, city, phone, email);
+			JOptionPane.showMessageDialog(null, "The customer has been successfully created");
 		}
         catch(Exception e){
         	System.out.println(e);
+        	JOptionPane.showMessageDialog(null, "There was a problem while trying to insert the customer into the database. Please try again");
         }
+		
 	}
 		
 	private void findCustomerById() {

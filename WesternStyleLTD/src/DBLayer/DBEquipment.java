@@ -13,7 +13,7 @@ public class DBEquipment implements DBIFEquipment{
 
 	@Override
 	public int insertEquipment(Equipment eq) {
-		String q = "insert into Equipment (type, descr, pid) values (?, ?, ?)";
+		String q = "insert into Equipment (eType, descr, pid) values (?, ?, ?)";
 		int res = -1;
 		try(PreparedStatement ps = DBConnection.getInstance().getDBcon().prepareStatement(q)
 		){

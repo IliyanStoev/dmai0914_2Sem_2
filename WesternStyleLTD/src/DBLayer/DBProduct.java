@@ -1,14 +1,10 @@
 package DBLayer;
 
 import modelLayer.*;
-import DBLayer.*;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DBProduct implements DBIFProduct {
 
@@ -47,7 +43,6 @@ public class DBProduct implements DBIFProduct {
 	
 	@Override
 	public void updateProduct(Product prod, int type) {
-		int res = -1;
 		if( prod != null ) {
 			String q = "update Product set "
 					+ "name='" + prod.getName() + "', "
@@ -58,7 +53,7 @@ public class DBProduct implements DBIFProduct {
 														+ "minStock='" + prod.getMinStock() + "' "
 					+ "where pid = " + prod.getPid();
 			try(Statement s = DBConnection.getInstance().getDBcon().createStatement()) {
-				res = s.executeUpdate(q);
+				s.executeUpdate(q);
 				switch(type) {
 				case 1 : DBIFClothing dbClothing = new DBClothing();
 						 dbClothing.updateClothing((Clothing)prod);
@@ -88,54 +83,9 @@ public class DBProduct implements DBIFProduct {
 		return res;
 	}
 	
-
-	
-	private String buildQuery(String where) {
-		String q = "select cid, name, address, zipCode, city, phoneNo from customer";
-		if(where != null && where.trim().length() > 0) {
-			q += " where " + where;
-		}
-		return q;
-	}
-	
-	private Customer buildProduct(ResultSet rs) {
-		Customer c = null;
-		try {
-			c = new Customer();
-			c.setCid(rs.getInt("cid"));
-			c.setName(rs.getString("name"));
-			//c.setAddress(rs.getString("address"));
-			c.setZipCode(rs.getInt("zipCode"));
-			c.setCity(rs.getString("city"));
-			c.setPhoneNo(rs.getString("phoneNo"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return c;
-	}
-	
-	@Override
-	public List<Product> getAllProducts(boolean retrieveAssociation) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Product findProduct(int pid) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public List<Product> searchProduct(String name, boolean retrieveAssociation) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	
-	
-
 }
 
 
